@@ -1,0 +1,60 @@
+{
+    "manifest_version": 2,
+
+    "name": "Youtube shortcuts",
+    "description": "This extension helps you to control a Youtube video using shortcuts.",
+    "version": "1.0",
+    "background": {
+        "scripts": ["popup.js"],
+        "persistent": true
+    },
+
+    "commands": {
+        "prev-track": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+7",
+                "mac": "Command+Shift+7"
+            },
+            "description": "Previous Track",
+            "global": true
+        },
+        "play-pause-track": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+8",
+                "mac": "Command+Shift+8"
+            },
+            "description": "Play/Pause Track",
+            "global": true
+        },
+        "next-track": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+9",
+                "mac": "Command+Shift+9"
+            },
+            "description": "Next Track",
+            "global": true
+        },
+        "skip-ads": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+6",
+                "mac": "Command+Shift+6"
+            },
+            "description": "Skip Ads",
+            "global": true
+        }
+    },
+
+    "icons": { "16": "icon16.png",
+               "48": "icon48.png",
+              "128": "icon128.png" },
+
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "*://www.youtube.com/*",
+        "notifications"
+    ]
+}
