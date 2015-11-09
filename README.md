@@ -2,7 +2,7 @@
 A Chrome extension which helps you to control a Youtube video using keyboard shortcuts.
 
 ## Installation
-Follow the steps given [here](developer.chrome.com/extensions/getstarted#unpacked)
+Follow the steps given [here](https://developer.chrome.com/extensions/getstarted#unpacked)
 
 ## Keys
 Use the following keys for controlling a youtube video running in chrome, from anywhere on the desktop.
