@@ -4,26 +4,34 @@ function execute_inline_code(code_to_execute, notification_text) {
     notification_text = notification_text || '';
     var s='';
     var done = false;
+    var paused = false;
     chrome.tabs.getAllInWindow(null, function(tabs){
         for (var i = 0; i < tabs.length; i++) {
             s=tabs[i].url;
             s=s.slice(0, 29);
             if(done==false && s.localeCompare("https://www.youtube.com/watch")==0){
-                done = true;
                 found = tabs[i].id;
                 chrome.tabs.executeScript( found, {
                     code: code_to_execute
+                }, function callBack(results) {
+                    paused = results;
                 });
                 if(notification_text.localeCompare('')!=0) {
                     send_notification(notification_text);
                 }
+                done = true;
             }
         }
     });
+    return paused;
 }
 
 function send_notification(notification_text) {
-    // TODO: Generate notification with notification_text
+    n = new Notification( notification_text, {
+		body: "Youtube Shortcuts",
+		icon : "icon48.ico"
+	});
+    setTimeout(n.close.bind(n), 2000);
 }
 
 function play_next() {
@@ -35,7 +43,8 @@ function play_previous() {
 }
 
 function play_pause_video() {
-    execute_inline_code('var vid=document.getElementsByClassName("video-stream")[0]; if(vid.paused) { vid.play(); } else { vid.pause(); } ');
+    execute_inline_code('var vid=document.getElementsByClassName("video-stream")[0]; if(vid.paused) { vid.play(); } else { vid.pause(); } vid.paused ')
+    send_notification("Video Played/Paused");
 }
 
 function skip_ads() {

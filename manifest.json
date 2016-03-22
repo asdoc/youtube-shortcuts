@@ -56,5 +56,8 @@
         "tabs",
         "*://www.youtube.com/*",
         "notifications"
+    ],
+    "web_accessible_resources": [
+        "icon48.png"
     ]
 }
