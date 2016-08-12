@@ -23,7 +23,7 @@
                 "default": "Ctrl+Shift+8",
                 "mac": "Command+Shift+8"
             },
-            "description": "Play/Pause Track",
+            "description": "Play/Pause-Repeat Track",
             "global": true
         },
         "next-track": {
