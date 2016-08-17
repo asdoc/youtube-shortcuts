@@ -11,3 +11,5 @@ Use the following keys for controlling a youtube video running in chrome, from a
 - Command+Shift+8 : Play/Pause
 - Command+Shift+9 : Next
 - Command+Shift+6 : Skip Ads
+
+(Use Ctrl instead of Command for non-apple products)
