@@ -4,7 +4,7 @@ function execute_inline_code(code_to_execute, notification_text) {
     notification_text = notification_text || '';
     var s='';
     var done = false;
-    var paused = "false";
+    var paused = false;
     chrome.tabs.getAllInWindow(null, function(tabs){
         for (var i = 0; i < tabs.length; i++) {
             s=tabs[i].url;
