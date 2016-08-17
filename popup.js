@@ -11,13 +11,32 @@ function execute_inline_code(code_to_execute, notification_text) {
             s=s.slice(0, 29);
             if(done==false && s.localeCompare("https://www.youtube.com/watch")==0){
                 found = tabs[i].id;
+                
+                
+
                 chrome.tabs.executeScript( found, {
                     code: code_to_execute
                 }, function callBack(results) {
                     paused = results;
                 });
                 if(notification_text.localeCompare('')!=0) {
-                    send_notification(notification_text);
+
+                    chrome.tabs.get(found,function(tab) {
+                        send_notification(notification_text + "\n" + tab.title);
+                    });
+
+                    
+                }
+                else
+                {
+                    var delay=3000; //3 second
+
+                    setTimeout(function() {
+                          chrome.tabs.get(found,function(tab) {
+                            send_notification( tab.title );
+                        });
+                    }, delay);
+                    
                 }
                 done = true;
             }
@@ -28,14 +47,15 @@ function execute_inline_code(code_to_execute, notification_text) {
 
 function send_notification(notification_text) {
     n = new Notification( notification_text, {
-		body: "Youtube Shortcuts",
-		icon : "icon48.ico"
+		body: "",
+		icon : "icon48.png"
 	});
     setTimeout(n.close.bind(n), 2000);
 }
 
 function play_next() {
     execute_inline_code('var x = (document.getElementsByClassName("ytp-next-button")[0].href); document.location = x;');
+    
 }
 
 function play_previous() {
@@ -43,8 +63,7 @@ function play_previous() {
 }
 
 function play_pause_video() {
-    execute_inline_code('var vid=document.getElementsByClassName("video-stream")[0]; if(vid.paused) { vid.play(); } else { vid.pause(); } vid.paused ')
-    send_notification("Video Played/Paused");
+    execute_inline_code('var vid=document.getElementsByClassName("video-stream")[0]; if(vid.paused) { vid.play(); } else { vid.pause(); } vid.paused ',"Video Played/Paused")
 }
 
 function skip_ads() {
