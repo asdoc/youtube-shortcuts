@@ -1,5 +1,5 @@
 # youtube-shortcuts
-A Chrome extension which helps you to control a Youtube video using keyboard shortcuts.
+A Chrome extension which helps you to control a Youtube video using keyboard shortcuts even when the browser window is not active.
 
 ## Installation
 Follow the steps given [here](https://developer.chrome.com/extensions/getstarted#unpacked):
