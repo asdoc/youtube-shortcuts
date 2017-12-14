@@ -67,7 +67,7 @@ function play_pause_video() {
 }
 
 function skip_ads() {
-    execute_inline_code("var skipButton = document.getElementsByClassName('videoAdUiSkipButton')[0]; skipButton.click();");
+    execute_inline_code("var skipButton = document.getElementsByClassName('ytp-ad-skip-button ytp-button')[0]; skipButton.click();");
 }
 
 chrome.commands.onCommand.addListener(function(command) {
