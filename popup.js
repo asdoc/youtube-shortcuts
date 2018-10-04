@@ -5,7 +5,7 @@ function execute_inline_code(code_to_execute, notification_text) {
     var s='';
     var done = false;
     var paused = false;
-    chrome.tabs.getAllInWindow(null, function(tabs){
+    chrome.tabs.query({}, function(tabs){
         for (var i = 0; i < tabs.length; i++) {
             s=tabs[i].url;
             s=s.slice(0, 29);
@@ -71,13 +71,13 @@ function skip_ads() {
 }
 
 chrome.commands.onCommand.addListener(function(command) {
-    if(command == "prev-track") {
+    if(command === "prev-track") {
         play_previous();
-    } else if(command == "play-pause-track") {
+    } else if(command === "play-pause-track") {
         play_pause_video();
-    } else if (command == "next-track") {
+    } else if (command === "next-track") {
         play_next();
-    } else if (command == "skip-ads") {
+    } else if (command === "skip-ads") {
         skip_ads();
     }
 });
